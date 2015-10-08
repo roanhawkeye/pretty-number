@@ -1,0 +1,2 @@
+class PrettyNumberController < ApplicationController
+end
