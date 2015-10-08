@@ -21,6 +21,7 @@ class PrettyNumber < ActiveRecord::Base
 				end
 			end
 		end
+		"Sorry, there is no available scale to prettify your number, please try again with different one"
 	end
 
 	private
