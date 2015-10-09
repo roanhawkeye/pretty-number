@@ -16,7 +16,7 @@ billion_scale_params = {
 }
 
 trillion_scale_params = {
-	name: 'Tillion',
+	name: 'Trillion',
 	abbreviation_name: 'T',
     number_min_length: 13,
     number_max_length: 15,
