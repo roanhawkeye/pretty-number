@@ -57,7 +57,7 @@ class PrettyNumberTest < ActiveSupport::TestCase
   	assert_not pretty_number.save
   end
 
-  test "should save if all fields presents" do
+  test "should save if all fields are unique and present" do
   	pretty_number_params = {
   		name: 'Quatrillion',
   		abbreviation_name: 'Q',
@@ -162,5 +162,29 @@ class PrettyNumberTest < ActiveSupport::TestCase
   	expected_pretty_version = '1.1B'
   	pretty_version = PrettyNumber.prettify(sample_number)
   	assert_equal(expected_pretty_version, pretty_version)
+  end
+
+  test "find_pretty_version should return error message if no scale available" do
+  	clean_sample_number = '11234567890000111'
+  	expected_message = "Sorry, there is no available scale to prettify your number, please try again with different one"
+  	pretty_version = PrettyNumber.find_pretty_version(clean_sample_number.length, clean_sample_number)
+  	assert_equal(expected_message, pretty_version)
+  end
+
+  test "build_pretty_version should return 1 decimal if firt digit after short version is not zero" do
+  	million_scale = pretty_numbers(:one)
+  	clean_sample_number = '1200000'
+  	expected_build = '1.2M'
+  	build_version = PrettyNumber.build_pretty_version(clean_sample_number, million_scale)
+  	assert_equal(expected_build, build_version)
+  end
+
+
+  test "build_pretty_version should return 0 decimal if firt digit after short version is zero" do
+  	billion_scale = pretty_numbers(:two)
+  	clean_sample_number = '5000000000'
+  	expected_build = '5B'
+  	build_version = PrettyNumber.build_pretty_version(clean_sample_number, billion_scale)
+  	assert_equal(expected_build, build_version)
   end
 end
