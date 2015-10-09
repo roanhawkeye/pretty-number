@@ -28,6 +28,7 @@ class PrettyNumbersController < ApplicationController
 		@pretty_number = PrettyNumber.new(pretty_number_params)
 
 		if @pretty_number.save
+			flash[:success] = "You have successfully create a PrettyNumber"
 			redirect_to @pretty_number
 		else
 			render 'new'
@@ -38,6 +39,7 @@ class PrettyNumbersController < ApplicationController
 		@pretty_number = PrettyNumber.find(params[:id])
 
 		if @pretty_number.update
+			flash[:success] = "You have successfully update PrettyNumber"
 			redirect_to @pretty_number
 		else
 			render 'edit'
@@ -48,6 +50,7 @@ class PrettyNumbersController < ApplicationController
 		@pretty_number = PrettyNumber.find(params[:id])
 		@pretty_number.destroy
 
+		flash[:success] = "You have successfully delete a PrettyNumber"
 		redirect_to pretty_numbers_path
 	end
 
