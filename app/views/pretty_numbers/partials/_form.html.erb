@@ -19,22 +19,22 @@
 
       <div class="form-group">
         <%= f.label :name %>:
-        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "Example: 'Millions' or 'Billions', etc, needs to be Unique" %>
       </div>
 
       <div class="form-group">
         <%= f.label :abbreviation_name %>:
-        <%= f.text_field :abbreviation_name, class: 'form-control' %>
+        <%= f.text_field :abbreviation_name, class: 'form-control', placeholder: "Example: 'M' for Millions, 'B' for Billions, needs to be Unique, one character" %>
       </div>
 
       <div class="form-group">
         <%= f.label :number_min_length %>:
-        <%= f.number_field :number_min_length, class: 'form-control' %>
+        <%= f.number_field :number_min_length, class: 'form-control', placeholder: "Example: '7' for Millions, '10' for Billions, needs to be Unique and short scale" %>
       </div>
 
       <div class="form-group">
         <%= f.label :number_max_length %>:
-        <%= f.number_field :number_max_length, class: 'form-control' %>
+        <%= f.number_field :number_max_length, class: 'form-control', placeholder: "Example: '9' for Millions, '12' for Billions, needs to be Unique and short scale" %>
       </div>
 
 
