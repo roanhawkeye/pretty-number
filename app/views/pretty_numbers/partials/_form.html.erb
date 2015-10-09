@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+    <%= form_for @pretty_number do |f| %>
+
+    <% if @pretty_number.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@pretty_number.errors.count, "error") %> prohibited
+          this pretty_number from being saved:
+        </h2>
+        <ul>
+          <% @pretty_number.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :name %>:
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :abbreviation_name %>:
+        <%= f.text_field :abbreviation_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :number_min_length %>:
+        <%= f.number_field :number_min_length, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :number_max_length %>:
+        <%= f.number_field :number_max_length, class: 'form-control' %>
+      </div>
+
+
+      <%= f.submit class: 'btn btn-success' %>
+      <%= link_to 'Back to Index', pretty_numbers_path, class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>

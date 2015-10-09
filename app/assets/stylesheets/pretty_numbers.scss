@@ -1,3 +1,24 @@
 // Place all the styles related to the pretty_number controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin width-align($width, $align) {
+    width: $width;
+    text-align: $align;
+}
+
+#name{
+	@include width-align(20%, center);
+}
+
+#abbreviation_name{
+	@include width-align(20%, center);
+}
+
+#number_min_length{
+	@include width-align(20%, center);
+}
+
+#number_max_length{
+	@include width-align(20%, center);
+}

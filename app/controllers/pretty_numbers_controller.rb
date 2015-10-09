@@ -1,4 +1,5 @@
 class PrettyNumbersController < ApplicationController
+	before_action :authenticate_user!, only: [:new, :edit, :show]
 
 	def index
 		@pretty_numbers = PrettyNumber.all
