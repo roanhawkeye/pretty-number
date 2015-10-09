@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
  resources :pretty_numbers
 
- devise_for :users
+ devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
 end

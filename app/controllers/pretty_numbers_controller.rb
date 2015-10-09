@@ -48,7 +48,7 @@ class PrettyNumbersController < ApplicationController
 		@pretty_number = PrettyNumber.find(params[:id])
 		@pretty_number.destroy
 
-		redirecto_to pretty_numbers_path
+		redirect_to pretty_numbers_path
 	end
 
 	private
