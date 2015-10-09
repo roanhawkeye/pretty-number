@@ -10,6 +10,10 @@ gem 'jquery-rails', '~> 4.0.5'
 gem 'turbolinks', '~> 2.5.3'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'devise', '~> 3.5.2' # Authentication
+gem "omniauth-google-oauth2" # Google authentication
+gem 'omniauth-twitter' # Twitter authentication
+gem 'omniauth-github' # Github authentication
 
 
 group :development, :test do

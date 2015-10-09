@@ -1,0 +1,28 @@
+<div class="page-header">	
+<h1 class="text-center"> Pretty Number Scale Detail</h1>
+</div>
+<div class="col-md-6 col-md-offset-3">
+	
+<h3>Name: <%= @pretty_number.name %></h3>
+<ul class="list-group">
+	<li class="list-group-item">
+		<strong>Abbreviation:</strong> <%= @pretty_number.abbreviation_name %>
+	</li>
+	<li class="list-group-item">
+		<strong>Minimum Number Length:</strong>
+  		<%= @pretty_number.number_min_length %>	
+	</li>
+	<li class="list-group-item">
+		<strong>Maximus Number Length:</strong>
+  		<%= @pretty_number.number_max_length %>
+	</li>
+</ul>
+<div class="row">	
+<%= link_to 'Edit', edit_pretty_number_path(@pretty_number), class: 'btn btn-success' %>
+<%= link_to 'Delete', pretty_number_path(@pretty_number),
+			  class: 'btn btn-danger',
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', pretty_numbers_path, class: 'btn btn-default' %> 
+</div>
+</div>
