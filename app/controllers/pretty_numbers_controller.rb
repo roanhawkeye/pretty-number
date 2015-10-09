@@ -28,7 +28,7 @@ class PrettyNumbersController < ApplicationController
 		@pretty_number = PrettyNumber.new(pretty_number_params)
 
 		if @pretty_number.save
-			redirecto_to @pretty_number
+			redirect_to @pretty_number
 		else
 			render 'new'
 		end
@@ -38,7 +38,7 @@ class PrettyNumbersController < ApplicationController
 		@pretty_number = PrettyNumber.find(params[:id])
 
 		if @pretty_number.update
-			redirecto_to @pretty_number
+			redirect_to @pretty_number
 		else
 			render 'edit'
 		end
