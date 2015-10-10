@@ -1,0 +1,18 @@
+# This model would be load to test database automatically
+one: 
+ name: 'Million'
+ abbreviation_name: 'M'
+ number_min_length: 7
+ number_max_length: 9
+
+two: 
+ name: 'Billion'
+ abbreviation_name: 'B'
+ number_min_length: 10
+ number_max_length: 12
+
+three:
+ name: 'Trillion'
+ abbreviation_name: 'T'
+ number_min_length: 13
+ number_max_length: 15

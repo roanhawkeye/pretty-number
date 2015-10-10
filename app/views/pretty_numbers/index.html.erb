@@ -1,0 +1,80 @@
+<div class="page-header">	
+	<h1 class="text-center">Prettify your number</h1>
+</div>
+<div class="row">	
+	<div class="col-md-6 col-md-offset-3">
+
+		<%= form_for :number, html: {class: 'form-inline'}, :url => url_for(:controller => 'pretty_numbers', :action => 'prettify', method: 'post'), remote: true do |f| %>
+		<div class="form-group col-md-offset-2">	
+			<%= f.number_field :value, class: 'form-control', placeholder: 'Enter a number',  :step => 'any' %>
+		</div>
+		<%= f.submit "Prettify Number Now", class: 'btn btn-success'%>
+		<% end %>
+
+		<div id="result" class="row"></div>
+	</div>
+</div>
+<% if user_signed_in? %>
+<div class="row">
+	<div class="page-header">	
+		<h2 class="text-center">Short Scale Management</h2>
+	</div>
+	<div class="col-md-8 col-md-offset-2">
+		
+	<div class="row">
+		<div class="col-md-2">
+			<p>	
+				<%= link_to new_pretty_number_path, title: "Add", class: 'btn btn-success' do%>
+				<span class="glyphicon glyphicon-plus"></span> New Scale
+				<% end %>
+			</p>	
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th id="name">Name</th>
+						<th id="abbreviation_name">Abbrev. Name</th> 
+						<th id="number_min_length">Minimum Number Length</th>
+						<th id="number_max_length">Maximum Number Length</th>
+						<th id="action"></th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="panel-body">
+			<table class="table table-condensed table-hover">
+				<tbody>
+					<% @pretty_numbers.each do |pretty_number| %>
+					<tr>
+						<td id="name"><%= pretty_number.name %></td>
+						<td id="abbreviation_name"><%= pretty_number.abbreviation_name %></td>
+						<td id="number_min_length"><%= pretty_number.number_min_length %></td> 
+						<td id="number_max_length"><%= pretty_number.number_max_length %></td>
+						<td id="action">
+							<%= link_to pretty_number_path(pretty_number), title: "View", class: 'btn btn-success' do%>
+							<span class="glyphicon glyphicon-eye-open"></span>
+							<% end %>
+							<%= link_to edit_pretty_number_path(pretty_number), title: "Edit", class: 'btn btn-info' do%>
+							<span class="glyphicon glyphicon-pencil"></span>
+							<% end %>
+							<%= link_to pretty_number_path(pretty_number),
+							title: "Delete",
+							class: 'btn btn-danger',
+								method: :delete,
+								data: { confirm: 'Are you sure?' } do %>
+								<span class="glyphicon glyphicon-remove"></span>
+								<% end %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	</div>
+	<% end %>
