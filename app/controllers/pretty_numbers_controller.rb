@@ -38,7 +38,7 @@ class PrettyNumbersController < ApplicationController
 	def update
 		@pretty_number = PrettyNumber.find(params[:id])
 
-		if @pretty_number.update
+		if @pretty_number.update(pretty_number_params)
 			flash[:success] = "You have successfully update PrettyNumber"
 			redirect_to @pretty_number
 		else

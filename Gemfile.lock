@@ -20,6 +20,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_model_serializers (0.9.3)
+      activemodel (>= 3.2)
     activejob (4.2.4)
       activesupport (= 4.2.4)
       globalid (>= 0.3.0)
@@ -198,6 +200,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers (= 0.9.3)
   better_errors (~> 2.1.1)
   bootstrap-sass (~> 3.3.5)
   byebug (~> 6.0.2)
@@ -205,9 +208,9 @@ DEPENDENCIES
   devise (~> 3.5.2)
   jbuilder (~> 2.0)
   jquery-rails (~> 4.0.5)
-  omniauth-github
-  omniauth-google-oauth2
-  omniauth-twitter
+  omniauth-github (= 1.1.2)
+  omniauth-google-oauth2 (= 0.2.8)
+  omniauth-twitter (= 1.2.1)
   rails (= 4.2.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
