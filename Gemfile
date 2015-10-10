@@ -15,7 +15,8 @@ gem "omniauth-google-oauth2", '0.2.8' # Google authentication
 gem 'omniauth-twitter', '1.2.1' # Twitter authentication
 gem 'omniauth-github', '1.1.2' # Github authentication
 gem 'active_model_serializers', '0.9.3' #Api gems
-
+gem 'pg'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug', '~> 6.0.2'
@@ -26,3 +27,4 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring', '~> 1.4.0'
 end
+ruby "2.2.1"
