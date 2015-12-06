@@ -1,28 +1,116 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+== NUMBER PRETTIFIER APPLICATION
 
-Things you may want to cover:
+=== Getting Started
 
-* Ruby version
+	This application was build with Ruby on Rails framework, this guide would help 	you to configure your develop environment.
 
-* System dependencies
+==== Prerequisites:
+  	* Ruby 2.2.1
+  	* Rails 4.2.4
+  	* Sqlite Database(Development)
 
-* Configuration
+	1.Clone and Go to root directory
+		
 
-* Database creation
+	2. Install Dependencies
+		Assuming that ruby 2.2.1 is already install, run:
 
-* Database initialization
+	$ bundle install
+	
+	Note: If it fails by not recognition of bundle command. Run:
+	$ gem install bundle
 
-* How to run the test suite
+		This will install all gems need it for the application
 
-* Services (job queues, cache servers, search engines, etc.)
+	3. Run Migration and Populate database with initial data:
+		This application uses a database to register short scales, in order to 			create and populates database run the following commands(on app root 				directory):
 
-* Deployment instructions
+		$ rake db:migrate
 
-* ...
+		$ rake db:seed
+
+		Migrate will create database and tables, and seed will populate database 			with the native support of Million, Billion and Trillion short scale.			
+
+	
+	4. Test your application:
+		For test the application start the server or do a change, you can simple:
+		
+		$ rake test
+
+	5. Start development server
+		After migrations are completed, it is time to run your local server:
+
+		$ rails server
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+	Now you are ready to test and user your application, at:
+
+		http://localhost:3000 (in your browser)
+
+=== ABOUT API FUNCTIONALITY:
+
+	The API is configure to respond to and api subdomain, this is by the 'api.' 	word before your server name. If you want to test the API, you will need a 	utility that could help you manage subdomains, for Mac you can use POW, and for 	linux exits PRAX.
+
+	Basic POW installation (MAC OS)
+
+		Install POW
+		$ curl get.pow.cx | sh
+
+		Move to POW root directory
+		$ cd ~/.pow
+
+		Create Link from .pow directory to root app directory
+		$ ln -s ~/project_directory/number_prettifier_app
+
+		Verify app on web browser
+		http://number_prettifier_app.dev		
+
+		If you have problems installing POW please go to Pow, documentation.
+		http://pow.cx/manual.html
+
+	Basic PRAX installation (Linux)
+
+		Install Prax
+		$ sudo git clone git://github.com/ysbaddaden/prax.git /opt/prax
+		$ cd /opt/prax/
+		$ ./bin/prax install
+
+		Link the apps
+		$ cd ~/project_directory/number_prettifier_app
+		$ prax link
+
+		start server
+		$ prax start
+
+		Verify app on web browser
+		http://number_prettifier_app.dev:3000
+
+		If you have any problem, you can consult PRAX documentation.
+		https://github.com/ysbaddaden/prax
+
+	If everything goes well with this installation you could now use curl to test 	or use the API. Following there are some examples:
+
+
+	INDEX (Retrieves all pretty_number registers from database)
+
+$ curl -H 'Accept: application/json'  -X GET http://api.number_prettifier.dev/pretty_numbers -H "Authorization: Token token=a47a8e54b11c4de5a4a351734c80a14a"
+
+SHOW(Retrieves information detail of one pretty_number register)
+$ curl -H 'Accept: application/json'  -X GET http://api.number_prettifier.dev/pretty_numbers/1 -H "Authorization: Token token=a47a8e54b11c4de5a4a351734c80a14a"
+
+CREATE (Creates a new Pretty Number scale, field must be unique)			
+$ curl -H 'Accept: application/json'  -X POST -d "pretty_number[name]=Quadrillion&pretty_number[abbreviation_name]=Q&pretty_number[number_min_length]=16&pretty_number[number_max_length]=18" http://api.number_prettifier.dev/pretty_numbers -H "Authorization: Token token=a47a8e54b11c4de5a4a351734c80a14a"
+
+UPDATE(Update an existing register in database, you must be careful with id number)
+$ curl -H 'Accept: application/json'  -X PUT -d "pretty_number[name]=Quadrillion&pretty_number[abbreviation_name]=Q&pretty_number[number_min_length]=17&pretty_number[number_max_length]=18" http://api.number_prettifier.dev/pretty_numbers/10 -H "Authorization: Token token=a47a8e54b11c4de5a4a351734c80a14a"
+		
+DESTROY (Deletes and existing register, be careful with id number)
+$ curl -H 'Accept: application/json'  -X DELETE http://api.number_prettifier.dev/pretty_numbers/12 -H "Authorization: Token token=a47a8e54b11c4de5a4a351734c80a14a"
+
+PRETTIFY (Returns a prettify version of a number provides if scale availabe and grather than 6 digits)
+$ curl -H 'Accept: application/json'  -X POST -d "number[value]=1230000" http://api.number_prettifier.dev/prettify -H "Authorization: Token token=a47a8e54b11c4de5a4a351734c80a14a"
+
+Now your ready have your environment up and running, Have Fun!
+
